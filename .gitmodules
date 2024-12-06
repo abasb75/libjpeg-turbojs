@@ -1,3 +1,0 @@
-[submodule "extern/libjpeg-turbo"]
-	path = extern/libjpeg-turbo
-	url = ../../chafey/libjpeg-turbo
