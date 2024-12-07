@@ -35,4 +35,4 @@ console.log('decoded',decoded);
 
 ```
 
-For see example you can use <a href="https://github.com/abasb75/openjpeg/blob/master/test/browser/index.html">this link</a>
+For see example you can use <a href="https://github.com/abasb75/libjpeg-turbojs/blob/master/test/index.html">this link</a>

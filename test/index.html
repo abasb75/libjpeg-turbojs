@@ -301,6 +301,8 @@ SPDX-License-Identifier: MIT
   }
 
   function decode(iterations = 1) {
+
+    
     $('#encodedSize').text('' + encodedBitStream.length.toLocaleString() + ' bytes');
 
     // Setup
@@ -322,6 +324,8 @@ SPDX-License-Identifier: MIT
     $('#decodeTime').text(((end-begin) / iterations).toFixed(2) + ' ms');
 
     frameInfo = decoder.getFrameInfo();
+
+    console.log(frameInfo);
 
     // Display image properties
     $('#status').text('OK');
@@ -423,7 +427,7 @@ SPDX-License-Identifier: MIT
   function main() {
 
     //init('fixtures/j2k/CT1-0decomp.j2k');
-    init('fixtures/jpeg/jpeg400jfif.jpg');
+    init('fixtures/shira_bird8.bmp');
     //init('fixtures/j2k/US1.j2k');
     //init('fixtures/j2k/XA1.j2k');
     //init('fixtures/j2c/MG1.j2c');
@@ -588,14 +592,6 @@ SPDX-License-Identifier: MIT
     main();
   });
 
-  TurboJPEGWasm().then(function(libjpegturbo) {
-    console.log('TurboJPEGWasm', TurboJPEGWasm);
-    decoderwasm = new libjpegturbo.JPEGDecoder();
-    encoderwasm = new libjpegturbo.JPEGEncoder();
-    encoder = encoderwasm;
-    decoder = decoderwasm;
-    $('#useWASM').prop('checked', true);
-    $('#useWASM').prop('disabled', false);
-  });
+  
 </script>
 </html>

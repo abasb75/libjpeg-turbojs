@@ -16,7 +16,7 @@ function decode(imageBuffer_1) {
             turboJpeg = yield TurboJPEGWasm();
         }
         const iterations = options.iterations || 1;
-        const decoder = turboJpeg.JPEGDecoder();
+        const decoder = new turboJpeg.JPEGDecoder();
         const encodedBitStream = new Uint8Array(imageBuffer);
         const encodedBuffer = decoder.getEncodedBuffer(encodedBitStream.length);
         encodedBuffer.set(encodedBitStream);

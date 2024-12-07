@@ -4,7 +4,7 @@
 
    add_executable(libjpegturbojs jslib.cpp)
 
-   target_link_libraries(libjpegturbojs PRIVATE turbojpeg-static)
+   target_link_libraries(libjpegturbojs PRIVATE turbojpeg)
    
    target_compile_features(libjpegturbojs PUBLIC cxx_std_11)
    

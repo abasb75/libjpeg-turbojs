@@ -18,7 +18,7 @@ async function decode(imageBuffer:ArrayBuffer,options:DecodeOptions={}) {
 
     const iterations = options.iterations || 1;
 
-    const decoder = turboJpeg.JPEGDecoder();
+    const decoder = new turboJpeg.JPEGDecoder();
     
     
     const encodedBitStream = new Uint8Array(imageBuffer)
