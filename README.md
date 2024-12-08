@@ -1,5 +1,5 @@
 
-# openjpegpjs
+# libjpegturbo
 
 JS/WebAssembly build of [libjpeg-turbo](https://github.com/libjpeg-turbo/libjpeg-turbo)
 
