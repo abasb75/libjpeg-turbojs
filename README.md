@@ -1,9 +1,8 @@
 
 # openjpegpjs
 
-JS/WebAssembly build of [OpenJPEG](https://github.com/uclouvain/openjpeg)
+JS/WebAssembly build of [libjpeg-turbo](https://github.com/libjpeg-turbo/libjpeg-turbo)
 
-NOTE - a forked version of OpenJPEG is currently used which has some changes to allow partial bitstream decoding
 
 ## Try It Out!
 
