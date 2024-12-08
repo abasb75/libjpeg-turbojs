@@ -53,3 +53,10 @@ interface EmbindModule {
 
 export type MainModule = WasmModule & typeof RuntimeExports & EmbindModule;
 export default function MainModuleFactory (options?: unknown): Promise<MainModule>;
+
+export declare function decode(imageBuffer:ArrayBuffer,options?:{iterations?:number;
+  decodeLevel?:number;
+  decodeLayer?:number;
+}): Promise<import('./types.js').DecodedTurboJPEG>;
+
+

@@ -54,7 +54,7 @@ rm -r libjpeg-turbo
 ```
 
 ## npm
-you can get already builded from <a href="https://www.npmjs.com/package/@abasb75/turbojpeg">npm package manager</a>
+you can get already builded from <a href="https://www.npmjs.com/package/@abasb75/turbojpeg-codec">npm package manager</a>
 
 ## TODOS
 

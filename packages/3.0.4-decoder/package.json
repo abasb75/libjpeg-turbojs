@@ -1,7 +1,7 @@
 {
-    "name": "@abasb75/turbojpeg",
-    "version": "3.0.4-decoder",
-    "description": "libjpeg-turbo for browsers",
+    "name": "@abasb75/turbojpeg-decoder",
+    "version": "3.0.4",
+    "description": "libjpeg-turbo for browsers/nodejs (only decoder)",
     "main": "index.js",
     "types": "interface.d.ts",
     "scripts": {
@@ -10,7 +10,7 @@
     "author": "",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/abasb75/libjpeg-turbojs/raction.git"
+        "url": "https://github.com/abasb75/libjpeg-turbojs/raction.git"
     },
     "bugs": {
         "url": "https://github.com/abasb75/libjpeg-turbojs/issues"

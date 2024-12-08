@@ -1,5 +1,5 @@
 {
-    "name": "@abasb75/turbojpeg",
+    "name": "@abasb75/turbojpeg-codec",
     "version": "3.0.4",
     "description": "libjpeg-turbo for browsers",
     "main": "index.js",
@@ -10,7 +10,7 @@
     "author": "",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/abasb75/libjpeg-turbojs/raction.git"
+        "url": "https://github.com/abasb75/libjpeg-turbojs/raction.git"
     },
     "bugs": {
         "url": "https://github.com/abasb75/libjpeg-turbojs/issues"
