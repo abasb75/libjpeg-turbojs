@@ -1,6 +1,6 @@
 {
     "name": "@abasb75/turbojpeg",
-    "version": "3.0.4-test4",
+    "version": "3.0.4-decoder",
     "description": "libjpeg-turbo for browsers",
     "main": "index.js",
     "types": "interface.d.ts",
