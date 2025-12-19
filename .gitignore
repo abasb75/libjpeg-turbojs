@@ -3,3 +3,8 @@ build-native/*
 test/fixtures/MG1.JLS
 test/fixtures/artificial*
 test/fixtures/jpeg/jpeg400jfif-new.jpg
+libjpeg-turbo-wasm/
+node_modules/
+libjpeg-turbo/
+build/
+dist/*

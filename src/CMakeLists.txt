@@ -1,38 +1,85 @@
+# src/CMakeLists.txt
+set(TURBOJPEG_INCLUDE_DIR "" CACHE PATH "Path to libjpeg-turbo source (with src/turbojpeg.h)")
+set(TURBOJPEG_LIBRARY "" CACHE FILEPATH "Path to libturbojpeg.a")
 
 
-   include_directories("../libjpeg-turbo" "../build/libjpeg-turbo")
+add_library(turbojpeg_static STATIC IMPORTED)
+set_target_properties(turbojpeg_static PROPERTIES
+    IMPORTED_LOCATION "${TURBOJPEG_LIBRARY}"
+    INTERFACE_INCLUDE_DIRECTORIES "${TURBOJPEG_INCLUDE_DIR}"
+)
 
-   add_executable(libjpegturbojs jslib.cpp)
+add_executable(libjpegturb_decoder jsdecoder.cpp)
+target_link_libraries(libjpegturb_decoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_decoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_decoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=0 -s MODULARIZE=1 -s EXPORT_ES6=0 -s EXPORT_NAME='TurboJPEGDecoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
 
-   target_link_libraries(libjpegturbojs PRIVATE turbojpeg-static)
-   
-   target_compile_features(libjpegturbojs PUBLIC cxx_std_11)
-   
-   if (CMAKE_BUILD_TYPE STREQUAL Debug)
-     SET(linkFlags "-g4")
-   else() # Either MinSizeRel, RelWithDebInfo or Release, all which run with optimizations enabled.
-     SET(linkFlags "-O3")
-   endif()
-   
-   set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-   
-   set_target_properties(
-    libjpegturbojs 
-       PROPERTIES 
-       LINK_FLAGS "\
-         --bind \
-         --allowJs \
-         --emit-tsd interface.d.ts \
-         -s MODULARIZE=1 \
-         -s WASM=0 \
-         -s DISABLE_EXCEPTION_CATCHING=1 \
-         -s ASSERTIONS=0 \
-         -s NO_EXIT_RUNTIME=1 \
-         -s MALLOC=emmalloc \
-         -s TOTAL_MEMORY=50mb \
-         -s FILESYSTEM=0 \
-         -s EXPORTED_FUNCTIONS=[] \
-         -s EXPORT_NAME=TurboJPEGWasm \
-         -s SINGLE_FILE=1 \
-         -s EXTRA_EXPORTED_RUNTIME_METHODS=[ccall] \
-      ")
+add_executable(libjpegturb_es6_decoder jsdecoder.cpp)
+target_link_libraries(libjpegturb_es6_decoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_es6_decoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_es6_decoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=0 -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORT_NAME='TurboJPEGDecoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+add_executable(libjpegturb_inline_decoder jsdecoder.cpp)
+target_link_libraries(libjpegturb_inline_decoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_inline_decoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_inline_decoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=1 -s MODULARIZE=1 -s EXPORT_ES6=0 -s EXPORT_NAME='TurboJPEGDecoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+add_executable(libjpegturb_inline_es6_decoder jsdecoder.cpp)
+target_link_libraries(libjpegturb_inline_es6_decoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_inline_es6_decoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_inline_es6_decoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=1 -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORT_NAME='TurboJPEGDecoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+
+add_executable(libjpegturb_encoder jsencoder.cpp)
+target_link_libraries(libjpegturb_encoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_encoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_encoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=0 -s MODULARIZE=1 -s EXPORT_ES6=0 -s EXPORT_NAME='TurboJPEGEncoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+
+add_executable(libjpegturb_es6_encoder jsencoder.cpp)
+target_link_libraries(libjpegturb_es6_encoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_es6_encoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_es6_encoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=0 -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORT_NAME='TurboJPEGEncoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+add_executable(libjpegturb_inline_encoder jsencoder.cpp)
+target_link_libraries(libjpegturb_inline_encoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_inline_encoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_inline_encoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=1 -s MODULARIZE=1 -s EXPORT_ES6=0 -s EXPORT_NAME='TurboJPEGEncoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+
+add_executable(libjpegturb_inline_es6_encoder jsencoder.cpp)
+target_link_libraries(libjpegturb_inline_es6_encoder PRIVATE turbojpeg_static)
+target_compile_features(libjpegturb_inline_es6_encoder PUBLIC cxx_std_11)
+if(EMSCRIPTEN)
+    set_target_properties(libjpegturb_inline_es6_encoder PROPERTIES
+        LINK_FLAGS "--bind -O3 -s WASM=1 -s SINGLE_FILE=1 -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORT_NAME='TurboJPEGEncoder' -s MALLOC=emmalloc -s ALLOW_MEMORY_GROWTH=1 -s DISABLE_EXCEPTION_CATCHING=1 --emit-tsd interface.d.ts"
+    )
+endif()
+

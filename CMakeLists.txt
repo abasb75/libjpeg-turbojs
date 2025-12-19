@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.16)
 project (libjpeg-turbojs
   LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # set the build type if not specified
 set(default_build_type "Release")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -17,8 +20,6 @@ endif()
 option(ENABLE_SHARED "" OFF)
 option(ENABLE_STATIC "" ON)
 
-# add the external library
-add_subdirectory(libjpeg-turbo EXCLUDE_FROM_ALL)
 
 # add the js wrapper
 if(EMSCRIPTEN)

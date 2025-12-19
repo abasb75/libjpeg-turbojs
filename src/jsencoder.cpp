@@ -16,16 +16,6 @@ EMSCRIPTEN_BINDINGS(FrameInfo) {
        ;
 }
 
-EMSCRIPTEN_BINDINGS(JPEGDecoder) {
-  class_<JPEGDecoder>("JPEGDecoder")
-    .constructor<>()
-    .function("getEncodedBuffer", &JPEGDecoder::getEncodedBuffer)
-    .function("getDecodedBuffer", &JPEGDecoder::getDecodedBuffer)
-    .function("readHeader", &JPEGDecoder::readHeader)
-    .function("decode", &JPEGDecoder::decode)
-    .function("getFrameInfo", &JPEGDecoder::getFrameInfo)
-   ;
-}
 
 EMSCRIPTEN_BINDINGS(JPEGEncoder) {
   class_<JPEGEncoder>("JPEGEncoder")

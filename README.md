@@ -16,16 +16,6 @@ This project uses git submodules to pull in OpenJPEG.  If developing, initialize
 git clone https://github.com/libjpeg-turbo/libjpeg-turbo
 ```
 
-This project uses Docker to provide a consistent developer environment.
-
-Find and remove this lines in libjpeg-turb/CMakeLists.txt:
-```bash
-if(NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  message(FATAL_ERROR "The libjpeg-turbo build system cannot be integrated into another build system using add_subdirectory().  Use ExternalProject_Add() instead.")
-endif()
-
-```
-
 Create docker container 'libjpeg-turbo'
 
 ```bash
